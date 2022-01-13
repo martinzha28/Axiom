@@ -17,30 +17,25 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-  print('We have logged in as {0.user}'.format(client))
+  print('{0.user}'.format(client) + ' is now online.')
+
 
 @client.event
 async def on_message(message):
   if message.author == client.user:
     return
 
-  if message.content.startswith('$hello'):
+  if message.content.startswith('w.help'):
+    await message.channel.send('Welcome to one of two Chat Bot for Discord, created by Andrea Ma and Martin Zhao using Python!')
+    await message.channel.send('Current Commands are: ')
+    await message.channel.send('https://tenor.com/view/wall-e-humans-lazy-eve-disney-gif-5471514')
+
+  if message.content.startswith('w.hello'):
     await message.channel.send('Hello!')
 
-  elif message.content.startswith('$inspire'):
+  elif message.content.startswith('w.inspire'):
     quote = get_quote()
     await message.channel.send(quote)
-
-
-  elif message.content.startswith('$love'):
-    await message.channel.send('https://tenor.com/view/hugs-love-heart-i-love-you-gif-15419493')
-
-  elif message.content.startswith('$emoji'):
-    await message.channel.send('Testing emoji: :thinking:')
-
-  elif message.content.startswith('$discordstyles'):
-    await message.channel.send('*italics* **bold** ***bold italics*** __underline__')
-    await message.channel.send('`one line code`')
 
 client.run(secret_discord_token)
 
