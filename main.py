@@ -11,7 +11,7 @@ def get_quote():
   quote = json_data[0]['q'] + " -" + json_data[0]['a']
   return(quote)
 
-secret_discord_token = os.environ['discord_token']
+walle_token = os.environ['walle_token']
 
 client = discord.Client()
 
@@ -37,5 +37,5 @@ async def on_message(message):
     quote = get_quote()
     await message.channel.send(quote)
 
-client.run(secret_discord_token)
+client.run(walle_token)
 
