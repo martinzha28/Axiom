@@ -11,7 +11,7 @@ def get_quote():
   quote = json_data[0]['q'] + " -" + json_data[0]['a']
   return(quote)
 
-secret_discord_token = os.environ['eve_token']
+eve_token = os.environ['eve_token']
 
 client = discord.Client()
 
@@ -25,17 +25,17 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  if message.content.startswith('w.help'):
+  if message.content.startswith('e.help'):
     await message.channel.send('Welcome to one of two Chat Bot for Discord, created by Andrea Ma and Martin Zhao using Python!')
     await message.channel.send('Current Commands are: ')
     await message.channel.send('https://tenor.com/view/wall-e-humans-lazy-eve-disney-gif-5471514')
 
-  if message.content.startswith('w.hello'):
+  if message.content.startswith('e.hello'):
     await message.channel.send('Hello!')
 
-  elif message.content.startswith('w.inspire'):
+  elif message.content.startswith('e.inspire'):
     quote = get_quote()
     await message.channel.send(quote)
 
-client.run(secret_discord_token)
+client.run(eve_token)
 
